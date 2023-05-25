@@ -17,10 +17,10 @@ class AdminSeeder extends Seeder
 
         if (is_null($admin)) {
             $admin           = new Admin();
-            $admin->name     = "Super Admin";
-            $admin->email    = "superadmin@example.com";
-            $admin->username = "superadmin";
-            $admin->password = Hash::make('12345678');
+            $admin->name     = "Jatinder Makker";
+            $admin->email    = "jatinder@grizzlytrucks.ca";
+            $admin->username = "jatinder";
+            $admin->password = Hash::make('123456');
             $admin->save();
         }
     }

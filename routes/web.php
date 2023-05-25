@@ -22,15 +22,20 @@ Auth::routes();
 Route::get('/', 'HomeController@redirectAdmin')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::group(['prefix' => 'client'], function () {
+    Route::get('/files/list','FilesController@fileslist')->name('fileslist');
+});
+
 /**
  * Admin routes
  */
 Route::group(['prefix' => 'web'], function () {
+
     Route::get('/', 'Backend\DashboardController@index')->name('admin.dashboard');
     Route::resource('roles', 'Backend\RolesController', ['names' => 'admin.roles']);
     Route::resource('users', 'Backend\UsersController', ['names' => 'admin.users']);
     Route::resource('list', 'Backend\AdminsController', ['names' => 'admin.admins']);
-
 
     // Login Routes
     Route::get('/login', 'Backend\Auth\LoginController@showLoginForm')->name('admin.login');

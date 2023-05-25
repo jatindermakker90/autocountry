@@ -5,7 +5,9 @@
 Dashboard Page - Admin Panel
 @endsection
 
-
+@php
+    $usr = Auth::guard('admin')->user();
+@endphp
 @section('admin-content')
 
 <!-- page title area start -->
@@ -15,7 +17,9 @@ Dashboard Page - Admin Panel
             <div class="breadcrumbs-area clearfix">
                 <!-- <h4 class="page-title pull-left">Files</h4> -->
                 <ul class="breadcrumbs pull-left">
+                     @if($usr->roles[0]->name !== 'supplier')
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    @endif
                     <li><span>Files List</span></li>
                 </ul>
             </div>
