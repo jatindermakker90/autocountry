@@ -18,9 +18,13 @@ class FilesController extends Controller
 
         $resume = time() . '.' . $request['file']->getClientOriginalExtension();
 
+        $sizeoffile = filesize($request['file']);
+
+        $filesizeinkb = number_format($sizeoffile / 1024, 2) . ' KB';
+
         $uploadimage = new ImageUpload();
         $uploadimage->user_id = $user_id;
-        $uploadimage->file_size = filesize($request['file']);
+        $uploadimage->file_size = $filesizeinkb;
         $uploadimage->file = $resume;
         $uploadimage->save();
 
