@@ -29,6 +29,7 @@ Admin - AutoCountry
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                     @endif
                     <li><span>All Files</span></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -60,6 +61,7 @@ Admin - AutoCountry
                                     <th width="5%">#</th>
                                     <th width="10%">File Name</th>
                                     <th width="10%">Size</th>
+                                    <th width="10%">Category</th>
                                     <th width="10%">Modified File</th>
                                     <th width="20%">Action</th>
                                 </tr>
@@ -70,6 +72,7 @@ Admin - AutoCountry
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $file->file }}</td>
                                     <td>{{ $file->file_size }}</td>
+                                    <td>{{ $file->category_name }}</td>
                                     <td>{{ $file->updated_at }}</td>
                                     <td><a download="MyPdf" href="{{ Storage::url($file->file) }}" title="MyPdf"><i class="fa fa-download"></i></a></td>
                                 </tr>

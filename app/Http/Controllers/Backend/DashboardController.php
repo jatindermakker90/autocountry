@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\ImageUpload;
+use App\Models\FileUpload;
 
 class DashboardController extends Controller
 {
