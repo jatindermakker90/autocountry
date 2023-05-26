@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ImageUpload;
 use Illuminate\Support\Facades\Auth;
+use App\Models\FileUpload;
 
 class FilesController extends Controller
 {
@@ -23,7 +24,7 @@ class FilesController extends Controller
 
         $filesizeinkb = number_format($sizeoffile / 1024, 2) . ' KB';
 
-        $uploadimage = new ImageUpload();
+        $uploadimage = new FileUpload();
         $uploadimage->user_id = $user_id;
         $uploadimage->file_size = $filesizeinkb;
         $uploadimage->file = $resume;
@@ -31,18 +32,18 @@ class FilesController extends Controller
         $uploadimage->save();
 
         $request['file']->move(base_path() . '/storage/app/public', $resume);
-        $files = ImageUpload::all();
+        $files = FileUpload::all();
         //return redirect('fileslist',compact('files'));
         return redirect('/web/files/list')->with(['files'=>$files,'success'=> 'File has been stored successfully!']);
     }
 
     public function fileslist(){
-      $files = ImageUpload::all();
+      $files = FileUpload::all();
       return view('backend.pages.files.list',compact('files'));
     }
 
     public function filebaseoncategory($category_name){
-      $files = ImageUpload::where('category_name',$category_name)->get();
+      $files = FileUpload::where('category_name',$category_name)->get();
       return view('backend.pages.files.list',compact('files'));
     }
 
