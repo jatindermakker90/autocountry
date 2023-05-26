@@ -46,10 +46,11 @@ Route::group(['prefix' => 'web'], function () {
 
     // Forget Password Routes
     Route::get('/password/reset', 'Backend\Auth\ForgetPasswordController@showLinkRequestForm')->name('admin.password.request');
-    Route::post('/password/reset/submit', 'Backend\Auth\ForgetPasswordController@reset')->name('admin.password.update');    
+    Route::post('/password/reset/submit', 'Backend\Auth\ForgetPasswordController@reset')->name('admin.password.update');
      // Files Routes
     Route::get('/files/list','FilesController@fileslist')->name('fileslist');
     Route::get('/file/upload','FilesController@getfileuploads')->name('fileupload');
     Route::post('/store','FilesController@store')->name('store');
+    Route::get('/files/list/{category}','FilesController@filebaseoncategory')->name('filebaseoncategory');
     //Route::get('/file/list','Backend\DashboardController@fileslist')->name('admin.fileslist');
 });

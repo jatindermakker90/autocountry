@@ -33,12 +33,23 @@ Dashboard Page - Admin Panel
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">File Upload</h4>
-                @include('backend.layouts.partials.messages')                                    
+                @include('backend.layouts.partials.messages')
                 <div class="seofct-icon">File Upload</div>
                     <form method="post" action="{{route('store')}}" enctype="multipart/form-data">
                       {{ csrf_field() }}
-                        <input type="file" name="file"> <br> <br>
+                      <div class="form-group">
+                        <label for="cars">Choose a Category:</label>
+                          <select class="form-control" style="width:15%;" name="category" id="cars">
+                            <option value="" selected>Select</option>
+                            <option value="wheels">Wheels</option>
+                            <option value="tires">Tires</option>
+                            <option value="ccessories">Accessories</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" style="width:20%;" type="file" name="file">
                         <button type="submit" value="submit" class="btn btn-primary mt-4 pr-4 pl-4">Upload</button>
+                      </div>
                     </form>
             </div>
         </div>

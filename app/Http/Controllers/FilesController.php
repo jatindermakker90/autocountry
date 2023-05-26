@@ -13,15 +13,21 @@ class FilesController extends Controller
     }
 
     public function store(Request $request){
+      //print_r($request->all()); die();
         $user_id = Auth::guard('admin')->user()->id;
         $this->validate($request,['file' => 'required']);
-
+        $this->validate($request,['category' => 'required']);
         $resume = time() . '.' . $request['file']->getClientOriginalExtension();
+
+        $sizeoffile = filesize($request['file']);
+
+        $filesizeinkb = number_format($sizeoffile / 1024, 2) . ' KB';
 
         $uploadimage = new ImageUpload();
         $uploadimage->user_id = $user_id;
-        $uploadimage->file_size = filesize($request['file']);
+        $uploadimage->file_size = $filesizeinkb;
         $uploadimage->file = $resume;
+        $uploadimage->category_name = $request->category;
         $uploadimage->save();
 
         $request['file']->move(base_path() . '/storage/app/public', $resume);
@@ -32,6 +38,11 @@ class FilesController extends Controller
 
     public function fileslist(){
       $files = ImageUpload::all();
+      return view('backend.pages.files.list',compact('files'));
+    }
+
+    public function filebaseoncategory($category_name){
+      $files = ImageUpload::where('category_name',$category_name)->get();
       return view('backend.pages.files.list',compact('files'));
     }
 
