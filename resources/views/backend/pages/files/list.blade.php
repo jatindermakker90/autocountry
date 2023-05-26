@@ -27,6 +27,7 @@ Admin - AutoCountry
                 <ul class="breadcrumbs pull-left">
                      @if($usr->roles[0]->name !== 'supplier')
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    @endif
                     <li><span>All Files</span></li>
                 </ul>
             </div>
@@ -46,7 +47,7 @@ Admin - AutoCountry
                 <div class="card-body">
                     <h4 class="header-title float-left">Uploaded File List</h4>
                     <p class="float-right mb-2">
-                        @if (Auth::guard('admin')->user()->can('admin.edit'))
+                        @if(Auth::guard('admin')->user()->can('admin.edit'))
                             <a class="btn btn-primary text-white" href="{{ route('fileupload') }}">Upload New User</a>
                         @endif
                     </p>
