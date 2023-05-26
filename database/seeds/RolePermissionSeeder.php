@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Permission;
 /**
  * Class RolePermissionSeeder.
  *
- * @see https://spatie.be/docs/laravel-permission/v5/basic-usage/multiple-guards
+ * 
  *
  * @package App\Database\Seeds
  */
@@ -21,18 +21,6 @@ class RolePermissionSeeder extends Seeder
      */
     public function run()
     {
-
-        /**
-         * Enable these options if you need same role and other permission for User Model
-         * Else, please follow the below steps for admin guard
-         */
-
-        // Create Roles and Permissions
-        // $roleSuperAdmin = Role::create(['name' => 'superadmin']);
-        // $roleAdmin = Role::create(['name' => 'admin']);
-        // $roleEditor = Role::create(['name' => 'editor']);
-        // $roleUser = Role::create(['name' => 'user']);
-
 
         // Permission List as array
         $permissions = [
@@ -96,19 +84,6 @@ class RolePermissionSeeder extends Seeder
             ],
         ];
 
-
-        // Create and Assign Permissions
-        // for ($i = 0; $i < count($permissions); $i++) {
-        //     $permissionGroup = $permissions[$i]['group_name'];
-        //     for ($j = 0; $j < count($permissions[$i]['permissions']); $j++) {
-        //         // Create Permission
-        //         $permission = Permission::create(['name' => $permissions[$i]['permissions'][$j], 'group_name' => $permissionGroup]);
-        //         $roleSuperAdmin->givePermissionTo($permission);
-        //         $permission->assignRole($roleSuperAdmin);
-        //     }
-        // }
-
-        // Do same for the admin guard for tutorial purposes
         $roleSuperAdmin = Role::create(['name' => 'superadmin', 'guard_name' => 'admin']);
 
         // Create and Assign Permissions

@@ -60,7 +60,7 @@ class LoginController extends Controller
             // Redirect to dashboard
             session()->flash('success', 'Successully Logged in !');
             $usr = Auth::guard('admin')->user();
-            if($usr->roles[0]->name == 'supplier'){
+            if(isset($usr->roles[0]) && $usr->roles[0]->name == 'supplier'){
                 return redirect()->route('fileslist');    
             }else{
                 return redirect()->route('admin.dashboard');
@@ -70,7 +70,7 @@ class LoginController extends Controller
             if (Auth::guard('admin')->attempt(['username' => $request->email, 'password' => $request->password], $request->remember)) {
                 session()->flash('success', 'Successully Logged in !');
                 $usr = Auth::guard('admin')->user();
-                if($usr->roles[0]->name == 'supplier'){
+                if(isset($usr->roles[0]) && $usr->roles[0]->name == 'supplier'){
                     return redirect()->route('fileslist');    
                 }else{
                     return redirect()->route('admin.dashboard');

@@ -16,7 +16,7 @@
                <ul class="metismenu" id="menu">
 
                     @if ($usr->can('dashboard.view'))
-                        @if($usr->roles[0]->name == 'supplier')
+                        @if(isset($usr->roles[0]) && $usr->roles[0]->name == 'supplier')
                         <li class="active">
                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-folder-open"></i><span>My Files</span></a>
                            <ul class="collapse">
@@ -67,7 +67,7 @@
                        </ul>
                    </li>
                    @endif
-                   @if($usr->roles[0]->name !== 'supplier')
+                   @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'supplier')
                    <li>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="fa fa-upload"></i>
