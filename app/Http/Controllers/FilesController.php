@@ -13,9 +13,10 @@ class FilesController extends Controller
     }
 
     public function store(Request $request){
+      //print_r($request->all()); die();
         $user_id = Auth::guard('admin')->user()->id;
         $this->validate($request,['file' => 'required']);
-
+        $this->validate($request,['category' => 'required']);
         $resume = time() . '.' . $request['file']->getClientOriginalExtension();
 
         $sizeoffile = filesize($request['file']);
@@ -26,6 +27,7 @@ class FilesController extends Controller
         $uploadimage->user_id = $user_id;
         $uploadimage->file_size = $filesizeinkb;
         $uploadimage->file = $resume;
+        $uploadimage->category_name = $request->category;
         $uploadimage->save();
 
         $request['file']->move(base_path() . '/storage/app/public', $resume);
