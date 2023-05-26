@@ -28,8 +28,7 @@ Admin - AutoCountry
                      @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'supplier')
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                     @endif
-                    <li><span>All Files</span></li>
-                    @endif
+                    <li><span>All Files</span></li>                   
                 </ul>
             </div>
         </div>
@@ -46,12 +45,7 @@ Admin - AutoCountry
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title float-left">Uploaded File List</h4>
-                    <p class="float-right mb-2">
-                        @if(Auth::guard('admin')->user()->can('admin.edit'))
-                            <a class="btn btn-primary text-white" href="{{ route('fileupload') }}">Upload New User</a>
-                        @endif
-                    </p>
+                    <h4 class="header-title float-left">Files List</h4>                    
                     <div class="clearfix"></div>
                     <div class="data-tables">
                         @include('backend.layouts.partials.messages')
