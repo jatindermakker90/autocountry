@@ -41,6 +41,11 @@ class FilesController extends Controller
       return view('backend.pages.files.list',compact('files'));
     }
 
+    public function filebaseoncategory($category_name){
+      $files = ImageUpload::where('category_name',$category_name)->get();
+      return view('backend.pages.files.list',compact('files'));
+    }
+
     public function getfileuploads(){
         return view('backend.pages.files.upload');
     }

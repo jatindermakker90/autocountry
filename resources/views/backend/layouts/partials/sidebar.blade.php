@@ -20,9 +20,9 @@
                         <li class="active">
                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-folder-open"></i><span>My Files</span></a>
                            <ul class="collapse">
-                               <li class="{{ Route::is('fileslist') ? 'active' : '' }}"><a href="{{ route('fileslist') }}">Wheels</a></li>
-                               <li class="{{ Route::is('fileslist') ? 'active' : '' }}"><a href="{{ route('fileslist') }}">Tires</a></li>
-                               <li class="{{ Route::is('fileslist') ? 'active' : '' }}"><a href="{{ route('fileslist') }}">Accessories</a></li>
+                               <li class="{{ Route::is('fileslist') ? 'active' : '' }}"><a href="{{ route('filebaseoncategory',['wheels']) }}">Wheels</a></li>
+                               <li class="{{ Route::is('fileslist') ? 'active' : '' }}"><a href="{{ route('filebaseoncategory',['tires']) }}">Tires</a></li>
+                               <li class="{{ Route::is('fileslist') ? 'active' : '' }}"><a href="{{ route('filebaseoncategory',['accessories']) }}">Accessories</a></li>
                            </ul>
                         </li>
                         @else
@@ -66,8 +66,8 @@
                            @endif
                        </ul>
                    </li>
-                   @endif   
-                   @if($usr->roles[0]->name !== 'supplier')                      
+                   @endif
+                   @if($usr->roles[0]->name !== 'supplier')
                    <li>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="fa fa-upload"></i>
@@ -78,14 +78,14 @@
                                 <a href="{{ route('fileslist') }}" aria-expanded="true">
                                     <i class="fa fa-upload"></i>
                                     <span>All Files</span>
-                                </a>                            
-                            </li> 
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ route('fileupload') }}" aria-expanded="true">
                                     <i class="fa fa-upload"></i>
                                     <span>Upload Files</span>
-                                </a>                            
-                            </li> 
+                                </a>
+                            </li>
                        </ul>
                    </li>
                    @endif
