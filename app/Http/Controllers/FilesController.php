@@ -18,8 +18,8 @@ class FilesController extends Controller
         $user_id = Auth::guard('admin')->user()->id;
         $this->validate($request,['file' => 'required']);
         $this->validate($request,['category' => 'required']);
-        $resume = time() . '.' . $request['file']->getClientOriginalExtension();
-
+        $temp_file_name = time() . '.' . $request['file']->getClientOriginalExtension();
+        $original_file_name = $request['file']->getClientOriginalName();
         $sizeoffile = filesize($request['file']);
 
         $filesizeinkb = number_format($sizeoffile / 1024, 2) . ' KB';
@@ -27,11 +27,12 @@ class FilesController extends Controller
         $uploadimage = new FileUpload();
         $uploadimage->user_id = $user_id;
         $uploadimage->file_size = $filesizeinkb;
-        $uploadimage->file = $resume;
+        $uploadimage->file = $temp_file_name;
+        $uploadimage->original_file_name = $original_file_name;
         $uploadimage->category_name = $request->category;
         $uploadimage->save();
 
-        $request['file']->move(base_path() . '/storage/app/public', $resume);
+        $request['file']->move(base_path() . '/storage/app/public', $temp_file_name);
         $files = FileUpload::all();
         //return redirect('fileslist',compact('files'));
         return redirect('/web/files/list')->with(['files'=>$files,'success'=> 'File has been stored successfully!']);

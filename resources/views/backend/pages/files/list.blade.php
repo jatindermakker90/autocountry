@@ -28,7 +28,7 @@ Admin - AutoCountry
                      @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'supplier')
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                     @endif
-                    <li><span>All Files</span></li>                   
+                    <li><span>All Files</span></li>
                 </ul>
             </div>
         </div>
@@ -45,7 +45,7 @@ Admin - AutoCountry
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title float-left">Files List</h4>                    
+                    <h4 class="header-title float-left">Files List</h4>
                     <div class="clearfix"></div>
                     <div class="data-tables">
                         @include('backend.layouts.partials.messages')
@@ -64,11 +64,11 @@ Admin - AutoCountry
                                @foreach ($files as $key => $file)
                                <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $file->file }}</td>
+                                    <td>{{ $file->original_file_name }}</td>
                                     <td>{{ $file->file_size }}</td>
                                     <td>{{ $file->category_name }}</td>
                                     <td>{{ $file->updated_at }}</td>
-                                    <td><a download="MyPdf" href="{{ Storage::url($file->file) }}" title="MyPdf"><i class="fa fa-download"></i></a></td>
+                                    <td><a download="{{ $file->original_file_name }}" href="{{ Storage::url($file->file) }}" title="{{ $file->original_file_name }}"><i class="fa fa-download"></i></a></td>
                                 </tr>
                                @endforeach
                             </tbody>
