@@ -1,14 +1,16 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use DB;
 /**
  * Class RolePermissionSeeder.
  *
- * 
+ *
  *
  * @package App\Database\Seeds
  */
@@ -21,7 +23,7 @@ class RolePermissionSeeder extends Seeder
      */
     public function run()
     {
-
+      $this->turncateTables();
         // Permission List as array
         $permissions = [
 
@@ -102,5 +104,18 @@ class RolePermissionSeeder extends Seeder
         if ($admin) {
             $admin->assignRole($roleSuperAdmin);
         }
+    }
+
+    private function turncateTables(){
+      DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+      Role::truncate();
+      DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+      DB::table('model_has_roles')->truncate();
+      DB::table('role_has_permissions')->truncate();
+
+      DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+      Permission::truncate();
+      DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+      DB::table('model_has_permissions')->truncate();
     }
 }

@@ -12,5 +12,6 @@
 <link rel="stylesheet" href="{{ asset('backend/assets/css/default-css.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/assets/css/styles.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/assets/css/responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/assets/css/fileupload.css') }}">
 <!-- modernizr css -->
 <script src="{{ asset('backend/assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
