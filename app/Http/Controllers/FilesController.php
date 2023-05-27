@@ -23,15 +23,29 @@ class FilesController extends Controller
         $sizeoffile = filesize($request['file']);
 
         $filesizeinkb = number_format($sizeoffile / 1024, 2) . ' KB';
-
-        $uploadimage = new FileUpload();
-        $uploadimage->user_id = $user_id;
-        $uploadimage->file_size = $filesizeinkb;
-        $uploadimage->file = $temp_file_name;
-        $uploadimage->original_file_name = $original_file_name;
-        $uploadimage->category_name = $request->category;
-        $uploadimage->save();
-
+        $checkfile = FileUpload::where('category_name',$request->category)->first();
+        if($checkfile){
+          if(is_file($checkfile->file))
+            {
+                Storage::delete($checkfile->file);
+                unlink(storage_path('/storage/app/public', $checkfile->file));
+            } else {
+                //echo "File does not exist";
+            }
+          $checkfile->user_id = $user_id;
+          $checkfile->file_size = $filesizeinkb;
+          $checkfile->file = $temp_file_name;
+          $checkfile->original_file_name = $original_file_name;
+          $checkfile->save();
+        } else {
+          $uploadimage = new FileUpload();
+          $uploadimage->user_id = $user_id;
+          $uploadimage->file_size = $filesizeinkb;
+          $uploadimage->file = $temp_file_name;
+          $uploadimage->original_file_name = $original_file_name;
+          $uploadimage->category_name = $request->category;
+          $uploadimage->save();
+        }
         $request['file']->move(base_path() . '/storage/app/public', $temp_file_name);
         $files = FileUpload::all();
         //return redirect('fileslist',compact('files'));
