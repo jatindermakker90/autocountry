@@ -79,9 +79,9 @@ class RolePermissionSeeder extends Seeder
                 'group_name' => 'file access',
                 'permissions' => [
                     // profile Permissions
-                    'file access.view',
-                    'file access.download',
-                    'file access.upload',
+                    'file.view',
+                    'file.download',
+                    'file.upload',
                 ]
             ],
         ];
