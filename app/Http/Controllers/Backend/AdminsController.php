@@ -133,7 +133,7 @@ class AdminsController extends Controller
         }
         $this->validate($request,['password' => 'required']);
         $this->validate($request,['password_confirmation' => 'required']);
-        $this->validate($request,['username' => 'required']);
+        //$this->validate($request,['username' => 'required']);
         // TODO: You can delete this in your local. This is for heroku publish.
         // This is only for Super Admin role,
         // so that no-one could delete or disable it by somehow.
@@ -146,16 +146,20 @@ class AdminsController extends Controller
         $admin = Admin::find($id);
 
         // Validation Data
-        $request->validate([
-            'name' => 'required|max:50',
-            'email' => 'required|max:100|email|unique:admins,email,' . $id,
-            'password' => 'nullable|min:6|confirmed',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|max:50',
+        //     'email' => 'required|max:100|email|unique:admins,email,' . $id,
+        //     'password' => 'nullable|min:6|confirmed',
+        // ]);
 
 
-        $admin->name = $request->name;
-        $admin->email = $request->email;
-        $admin->username = $request->username;
+        // $admin->name = $request->name;
+        // $admin->email = $request->email;
+        // $admin->username = $request->username;
+        if($request->password != $request->password_confirmation){
+          session()->flash('error', 'Password and Confirm Password not same !!');
+          return back();
+        }
         if ($request->password) {
             $admin->password = Hash::make($request->password);
         }

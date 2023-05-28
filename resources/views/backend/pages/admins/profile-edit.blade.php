@@ -50,11 +50,11 @@ User Edit - AutoCountry
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ $admin->name }}">
+                                <input type="text" class="form-control" disabled id="name" name="name" placeholder="Enter Name" value="{{ $admin->name }}">
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="email">User Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{ $admin->email }}">
+                                <input type="text" class="form-control" disabled id="email" name="email" placeholder="Enter Email" value="{{ $admin->email }}">
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@ User Edit - AutoCountry
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Assign Roles</label>
-                                <select name="roles[]" id="roles" class="form-control select2" multiple>
+                                <select name="roles[]" id="roles" disabled class="form-control select2" multiple>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->name }}" {{ $admin->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
                                     @endforeach
@@ -80,7 +80,7 @@ User Edit - AutoCountry
                             </div>
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required value="{{ $admin->username }}">
+                                <input type="text" class="form-control" disabled id="username" name="username" placeholder="Enter Username" required value="{{ $admin->username }}">
                             </div>
                         </div>
 
