@@ -115,6 +115,61 @@ class AdminsController extends Controller
         return view('backend.pages.admins.edit', compact('admin', 'roles'));
     }
 
+    public function profileEditView(int $id)
+    {
+        if (is_null($this->user) || !$this->user->can('profile.view')) {
+            abort(403, 'Sorry !! You are Unauthorized to edit any admin !');
+        }
+
+        $admin = Admin::find($id);
+        $roles  = Role::all();
+        return view('backend.pages.admins.profile-edit', compact('admin', 'roles'));
+    }
+
+    public function profileUpdate(Request $request, int $id)
+    {
+        if (is_null($this->user) || !$this->user->can('profile.edit')) {
+            abort(403, 'Sorry !! You are Unauthorized to edit any admin !');
+        }
+        $this->validate($request,['password' => 'required']);
+        $this->validate($request,['password_confirmation' => 'required']);
+        $this->validate($request,['username' => 'required']);
+        // TODO: You can delete this in your local. This is for heroku publish.
+        // This is only for Super Admin role,
+        // so that no-one could delete or disable it by somehow.
+        if ($id === 1) {
+            session()->flash('error', 'Sorry !! You are not authorized to update this Admin as this is the Super Admin. Please create new one if you need to test !');
+            return back();
+        }
+
+        // Create New Admin
+        $admin = Admin::find($id);
+
+        // Validation Data
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|max:100|email|unique:admins,email,' . $id,
+            'password' => 'nullable|min:6|confirmed',
+        ]);
+
+
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->username = $request->username;
+        if ($request->password) {
+            $admin->password = Hash::make($request->password);
+        }
+        $admin->save();
+
+        // $admin->roles()->detach();
+        // if ($request->roles) {
+        //     $admin->assignRole($request->roles);
+        // }
+
+        session()->flash('success', 'Details has been updated !!');
+        return back();
+    }
+
     /**
      * Update the specified resource in storage.
      *
