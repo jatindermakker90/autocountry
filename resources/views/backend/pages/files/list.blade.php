@@ -49,7 +49,7 @@ Admin - AutoCountry
                     <div class="clearfix"></div>
                     <div class="data-tables">
                         @include('backend.layouts.partials.messages')
-                        <table id="dataTable" class="text-center">
+                        <table id="dataTable" class="text-center table-responsive">
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th width="5%">#</th>
@@ -68,7 +68,7 @@ Admin - AutoCountry
                                     <td>{{ $file->file_size }}</td>
                                     <td>{{ $file->category_name }}</td>
                                     <td>{{ $file->updated_at }}</td>
-                                    <td><a download="{{ $file->original_file_name }}" href="{{ Storage::url($file->file) }}" title="{{ $file->original_file_name }}"><i class="fa fa-download"></i></a></td>
+                                    <td><a class="btn btn-primary text-white" download="{{ $file->original_file_name }}" href="{{ Storage::url($file->file) }}" title="{{ $file->original_file_name }}" style="padding: 3px 8px;"><i class="fa fa-download"></i></a></td>
                                 </tr>
                                @endforeach
                             </tbody>
@@ -98,7 +98,7 @@ Admin - AutoCountry
         ==================================*/
         if ($('#dataTable').length) {
             $('#dataTable').DataTable({
-                responsive: true
+                //responsive: true
             });
         }
 

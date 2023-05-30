@@ -50,7 +50,7 @@ Role Page - Admin Panel
                     <div class="clearfix"></div>
                     <div class="data-tables">
                         @include('backend.layouts.partials.messages')
-                        <table id="dataTable" class="text-center">
+                        <table id="dataTable" class="text-center table-responsive">
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th width="5%">Sl</th>
@@ -97,7 +97,7 @@ Role Page - Admin Panel
             </div>
         </div>
         <!-- data table end -->
-        
+
     </div>
 </div>
 @endsection
@@ -110,14 +110,14 @@ Role Page - Admin Panel
      <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
      <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
      <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-     
+
      <script>
          /*================================
         datatable active
         ==================================*/
         if ($('#dataTable').length) {
             $('#dataTable').DataTable({
-                responsive: true
+                //responsive: true
             });
         }
 

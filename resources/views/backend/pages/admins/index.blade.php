@@ -50,7 +50,7 @@ Admin - AutoCountry
                     <div class="clearfix"></div>
                     <div class="data-tables">
                         @include('backend.layouts.partials.messages')
-                        <table id="dataTable" class="text-center">
+                        <table id="dataTable" class="text-center table-responsive">
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th width="5%">Sl</th>
@@ -75,13 +75,13 @@ Admin - AutoCountry
                                     </td>
                                     <td>
                                         @if (Auth::guard('admin')->user()->can('admin.edit'))
-                                            <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}">Edit</a>
+                                            <a class="btn btn-primary text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="margin-right: 10px; padding: 3px 8px;"><i class="fa fa-edit"></i></a>
                                         @endif
 
                                         @if (Auth::guard('admin')->user()->can('admin.delete'))
                                         <a class="btn btn-danger text-white" href="{{ route('admin.admins.destroy', $admin->id) }}"
-                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();">
-                                            Delete
+                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();" style="margin-right: 10px; padding: 3px 8px;">
+                                            <i class="fa fa-trash"></i>
                                         </a>
                                         <form id="delete-form-{{ $admin->id }}" action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST" style="display: none;">
                                             @method('DELETE')
@@ -89,9 +89,9 @@ Admin - AutoCountry
                                         </form>
                                         @endif
                                         @if (Auth::guard('admin')->user()->user_status == 0)
-                                            <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}">In Active</a>
+                                            <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="padding: 3px 8px;"><i class="fa fa-times" aria-hidden="true"></i></a>
                                         @else
-                                            <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}">Active</a>
+                                            <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="padding: 3px 8px;"><i class="fa fa-check" aria-hidden="true"></i></a>
                                         @endif
                                     </td>
                                 </tr>
@@ -123,7 +123,7 @@ Admin - AutoCountry
         ==================================*/
         if ($('#dataTable').length) {
             $('#dataTable').DataTable({
-                responsive: true
+                //responsive: true
             });
         }
 
