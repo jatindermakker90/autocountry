@@ -89,9 +89,9 @@ Admin - AutoCountry
                                         </form>
                                         @endif
                                         @if (Auth::guard('admin')->user()->user_status == 0)
-                                            <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="padding: 3px 8px;"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                        @else
                                             <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="padding: 3px 8px;"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                        @else
+                                            <a class="btn btn-danger text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="padding: 3px 8px;"><i class="fa fa-times" aria-hidden="true"></i></a>
                                         @endif
                                     </td>
                                 </tr>
