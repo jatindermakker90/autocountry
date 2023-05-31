@@ -132,7 +132,7 @@
         background: #fffbfb;
     }
     .sbar_collapsed .sidebar-menu {
-        left: -10%;
+        left: 0%;
     }
     .sbar_collapsed .nav-btn {
         position: initial;
@@ -189,7 +189,7 @@
         background: #fffbfb;
     }
     .sbar_collapsed .sidebar-menu {
-        left: -10%;
+        left: 0%;
     }
     .sbar_collapsed .nav-btn {
         position: initial;
@@ -445,7 +445,7 @@
         background: #fffbfb;
     }
     .sbar_collapsed .sidebar-menu {
-        left: -10%;
+        left: 0%;
     }
     .sbar_collapsed .nav-btn {
         position: initial;
