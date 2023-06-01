@@ -75,26 +75,89 @@ Admin - AutoCountry
                                     </td>
                                     <td>
                                         @if (Auth::guard('admin')->user()->can('admin.edit'))
-                                            <a class="btn btn-primary text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="margin-right: 10px; padding: 3px 8px;"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-primary text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="margin-right: 10px; padding: 3px 8px;" title="Edit"><i class="fa fa-edit"></i></a>
                                         @endif
 
                                         @if (Auth::guard('admin')->user()->can('admin.delete'))
-                                        <a class="btn btn-danger text-white" href="{{ route('admin.admins.destroy', $admin->id) }}"
-                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();" style="margin-right: 10px; padding: 3px 8px;">
+                                        <!-- <a class="btn btn-danger text-white" href="{{ route('admin.admins.destroy', $admin->id) }}"
+                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();" style="margin-right: 10px; padding: 3px 8px;" title="Delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a> -->
+                                        <a class="btn btn-danger text-white" data-toggle="modal" data-target="#deleteconfirmation{{ $admin->id }}"
+                                         style="margin-right: 10px; padding: 3px 8px;" title="Delete">
                                             <i class="fa fa-trash"></i>
                                         </a>
-                                        <form id="delete-form-{{ $admin->id }}" action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST" style="display: none;">
+                                        <!-- <form id="delete-form-{{ $admin->id }}" action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST" style="display: none;">
                                             @method('DELETE')
                                             @csrf
-                                        </form>
+                                        </form> -->
                                         @endif
-                                        @if (Auth::guard('admin')->user()->user_status == 0)
-                                            <a class="btn btn-success text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="padding: 3px 8px;"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                        @if ($admin->user_status == 1)
+                                            <a class="btn btn-success text-white" data-toggle="modal" data-target="#exampleModalCenter{{ $admin->id }}" style="padding: 3px 8px;" title="Active"><i class="fa fa-check" aria-hidden="true"></i></a>
                                         @else
-                                            <a class="btn btn-danger text-white" href="{{ route('admin.admins.edit', $admin->id) }}" style="padding: 3px 8px;"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            <a class="btn btn-danger text-white" data-toggle="modal" data-target="#exampleModalCenter{{ $admin->id }}" style="padding: 3px 8px;" title="InActive"><i class="fa fa-times" aria-hidden="true"></i></a>
                                         @endif
                                     </td>
                                 </tr>
+                                <!-- Status Modal -->
+                                <div class="modal fade" id="exampleModalCenter{{ $admin->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form action="{{ route('userstatus.update', $admin->id) }}" method="POST">
+                                    @csrf
+                                    <div class="modal-content">
+                                      @if ($admin->user_status == 0)
+                                      <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Active Account</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                       Are you sure you want to active this account
+                                      </div>
+                                      <input type="text" value="active" name="status" hidden>
+                                      @else
+                                      <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Inactive Account</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                       Are you sure you want to inactive this account
+                                      </div>
+                                      <input type="text" value="inactive" name="status" hidden>
+                                      @endif
+                                      <div class="modal-footer">
+                                          <input type="submit" class="btn btn-primary" value='Submit'>
+                                      </div>
+                                    </div>
+                                  </form>
+                                  </div>
+                                </div>
+                                <!-- Delete Confirmation Modal -->
+                                <div class="modal fade" id="deleteconfirmation{{ $admin->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST">
+                                      @method('DELETE')
+                                    @csrf
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLongTitle">Delete Account</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                       Are you sure you want to delete this account
+                                      </div>
+                                      <div class="modal-footer">
+                                          <input type="submit" class="btn btn-primary" value='Submit'>
+                                      </div>
+                                    </div>
+                                  </form>
+                                  </div>
+                                </div>
                                @endforeach
                             </tbody>
                         </table>

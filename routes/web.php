@@ -54,5 +54,6 @@ Route::group(['prefix' => 'web'], function () {
     Route::get('/files/list/{category}','FilesController@filebaseoncategory')->name('filebaseoncategory');
     Route::get('/profile/edit/{user_id}','Backend\AdminsController@profileEditView')->name('profile.editView');
     Route::post('/profile/edit/{user_id}','Backend\AdminsController@profileUpdate')->name('profile.update');
+    Route::post('/update/userstatus/{user_id}','Backend\AdminsController@userstatusUpdate')->name('userstatus.update');
     //Route::get('/file/list','Backend\DashboardController@fileslist')->name('admin.fileslist');
 });

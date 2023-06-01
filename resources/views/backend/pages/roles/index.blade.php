@@ -73,12 +73,12 @@ Role Page - Admin Panel
                                     </td>
                                     <td>
                                         @if (Auth::guard('admin')->user()->can('admin.edit'))
-                                            <a class="btn btn-primary text-white" href="{{ route('admin.roles.edit', $role->id) }}" style="margin-right: 10px; padding: 3px 8px;"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-primary text-white" href="{{ route('admin.roles.edit', $role->id) }}" style="margin-right: 10px; padding: 3px 8px;" title="Edit"><i class="fa fa-edit"></i></a>
                                         @endif
 
                                         @if (Auth::guard('admin')->user()->can('admin.edit'))
                                             <a class="btn btn-danger text-white" href="{{ route('admin.roles.destroy', $role->id) }}"
-                                            onclick="event.preventDefault(); document.getElementById('delete-form-{{ $role->id }}').submit();" style="margin-right: 10px; padding: 3px 8px;">
+                                            onclick="event.preventDefault(); document.getElementById('delete-form-{{ $role->id }}').submit();" style="margin-right: 10px; padding: 3px 8px;" title="Delete">
                                                 <i class="fa fa-trash"></i>
                                             </a>
 

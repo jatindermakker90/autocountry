@@ -223,6 +223,38 @@ class AdminsController extends Controller
         return back();
     }
 
+    public function userstatusUpdate(Request $request,int $id){
+      if (is_null($this->user) || !$this->user->can('admin.edit')) {
+          abort(403, 'Sorry !! You are Unauthorized to edit any admin !');
+      }
+
+      if ($id === 1) {
+          session()->flash('error', 'Sorry !! You are not authorized to update this Admin as this is the Super Admin. Please create new one if you need to test !');
+          return back();
+      }
+
+      // Create New Admin
+      $admin = Admin::find($id);
+      if($admin){
+        if($request->status == 'inactive'){
+          $admin->user_status = 0;
+          $admin->save();
+
+          session()->flash('success', 'User Status has been updated !!');
+          return back();
+        }
+        if($request->status == 'active'){
+          $admin->user_status = 1;
+          $admin->save();
+
+          session()->flash('success', 'User Status has been updated !!');
+          return back();
+        }
+      } else {
+        session()->flash('error', 'Something went wrong !!');
+        return back();
+      }
+    }
     /**
      * Remove the specified resource from storage.
      *
