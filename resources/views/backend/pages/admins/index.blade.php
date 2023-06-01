@@ -83,10 +83,10 @@ Admin - AutoCountry
                                         onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();" style="margin-right: 10px; padding: 3px 8px;" title="Delete">
                                             <i class="fa fa-trash"></i>
                                         </a> -->
-                                        <a class="btn btn-danger text-white" data-toggle="modal" data-target="#deleteconfirmation{{ $admin->id }}"
+                                        <!-- <a class="btn btn-danger text-white" data-toggle="modal" data-target="#deleteconfirmation{{ $admin->id }}"
                                          style="margin-right: 10px; padding: 3px 8px;" title="Delete">
                                             <i class="fa fa-trash"></i>
-                                        </a>
+                                        </a> -->
                                         <!-- <form id="delete-form-{{ $admin->id }}" action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST" style="display: none;">
                                             @method('DELETE')
                                             @csrf
