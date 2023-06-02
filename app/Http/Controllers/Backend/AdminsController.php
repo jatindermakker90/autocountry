@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Mail;
 
 class AdminsController extends Controller
 {
@@ -82,6 +83,11 @@ class AdminsController extends Controller
         if ($request->roles) {
             $admin->assignRole($request->roles);
         }
+        $mail = Mail::send('mail', ['course_details' => 'details'], function ($message) {
+            $message->from('info@autocountrydata.ca', 'Subject');
+            $message->subject('Subject');
+            $message->to('cu.gagankashyap@gmail.com');
+        });
 
         session()->flash('success', 'User has been created !!');
         return redirect()->route('admin.admins.index');

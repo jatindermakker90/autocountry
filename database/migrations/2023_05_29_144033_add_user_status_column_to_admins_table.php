@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('admins', function (Blueprint $table) {
-            $table->tinyInteger('user_status')->default(0)->comment('0 for inactive, 1 for active');
+            $table->tinyInteger('user_status')->default(1)->comment('0 for inactive, 1 for active');
         });
     }
 
