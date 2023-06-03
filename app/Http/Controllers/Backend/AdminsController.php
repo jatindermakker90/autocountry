@@ -140,7 +140,6 @@ class AdminsController extends Controller
         $this->validate($request,['password' => 'required']);
         $this->validate($request,['password_confirmation' => 'required']);
         //$this->validate($request,['username' => 'required']);
-        // TODO: You can delete this in your local. This is for heroku publish.
         // This is only for Super Admin role,
         // so that no-one could delete or disable it by somehow.
         if ($id === 1) {
@@ -192,8 +191,6 @@ class AdminsController extends Controller
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to edit any admin !');
         }
-
-        // TODO: You can delete this in your local. This is for heroku publish.
         // This is only for Super Admin role,
         // so that no-one could delete or disable it by somehow.
         if ($id === 1) {
@@ -272,8 +269,6 @@ class AdminsController extends Controller
         if (is_null($this->user) || !$this->user->can('admin.delete')) {
             abort(403, 'Sorry !! You are Unauthorized to delete any admin !');
         }
-
-        // TODO: You can delete this in your local. This is for heroku publish.
         // This is only for Super Admin role,
         // so that no-one could delete or disable it by somehow.
         if ($id === 1) {
