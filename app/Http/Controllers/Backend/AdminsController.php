@@ -86,7 +86,7 @@ class AdminsController extends Controller
         $mail = Mail::send('mail', ['course_details' => 'details'], function ($message) {
             $message->from('info@autocountrydata.ca', 'Subject');
             $message->subject('Subject');
-            $message->to('cu.gagankashyap@gmail.com');
+            $message->to($request->email);
         });
 
         session()->flash('success', 'User has been created !!');
