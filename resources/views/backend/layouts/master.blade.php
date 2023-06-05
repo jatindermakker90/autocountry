@@ -20,7 +20,9 @@
     </div>
     <!-- preloader area end -->
     <!-- page container area start -->
-    <div class="page-container">
+    <div id="main">
+    <!-- <div class="page-container"> -->
+    <div class="">
 
        @include('backend.layouts.partials.sidebar')
 
@@ -32,6 +34,7 @@
         <!-- main content area end -->
         @include('backend.layouts.partials.footer')
     </div>
+  </div>
     <!-- page container area end -->
 
     @include('backend.layouts.partials.offsets')

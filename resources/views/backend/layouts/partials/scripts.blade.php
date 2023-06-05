@@ -1,3 +1,17 @@
+<script>
+function openNav() {
+  document.getElementById("btnopen").style.display = "none";
+  document.getElementById("btnclose").style.display = "block";
+  document.getElementById("sidebar-menu").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav() {
+  document.getElementById("btnclose").style.display = "none";
+  document.getElementById("btnopen").style.display = "block";
+  document.getElementById("sidebar-menu").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
 <!-- jquery latest version -->
 <script src="{{ asset('backend/assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
 <!-- bootstrap 4 js -->

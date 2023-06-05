@@ -2,9 +2,9 @@
 @php
     $usr = Auth::guard('admin')->user();
 @endphp
-<div class="sidebar-menu">
+<div class="sidebar-menu" id="sidebar-menu">
    <div class="sidebar-header">
-       <div class="" style="width:77% ">
+       <div class="sidebar" style="width:77% ">
            <a href="{{ route('admin.dashboard') }}">
                <img src="{{asset('backend/assets/images/logo.png')}}" alt="location-team">
            </a>
@@ -26,7 +26,7 @@
                             </li>
                         @endif
                     @endif
-                    @if ($usr->can('dashboard.view'))                        
+                    @if ($usr->can('dashboard.view'))
                         <li class="active">
                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                            <ul class="collapse">
