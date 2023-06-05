@@ -3,14 +3,14 @@
     $usr = Auth::guard('admin')->user();
 @endphp
 <div class="sidebar-menu" id="sidebar-menu">
-   <div class="sidebar-header">
-       <div class="sidebar" style="width:77% ">
+   <div class="sidebar-header" style="margin-left: 30px; height:50px">
+       <!-- <div class="sidebar"> -->
            <a href="{{ route('admin.dashboard') }}">
-               <img src="{{asset('backend/assets/images/logo.png')}}" alt="location-team">
+               <img src="{{asset('backend/assets/images/logo.png')}}" alt="location-team" style="width:70%; height:55%">
            </a>
-       </div>
+       <!-- </div> -->
    </div>
-   <div class="main-menu">
+   <div class="main-menu clearfix">
        <div class="menu-inner">
            <nav>
                <ul class="metismenu" id="menu">
