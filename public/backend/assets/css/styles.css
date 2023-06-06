@@ -767,7 +767,7 @@ ul.breadcrumbs {
             transform: none!important;
     top: 130%!important;
     right: 30px!important;
-    left: auto!important;
+/*    left: auto!important;*/
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
     display: block!important;
@@ -794,7 +794,7 @@ ul.breadcrumbs {
     letter-spacing: 0;
     font-weight: 500;
     padding: 4px 120px;
-    padding-left: 25px;
+    padding-left: 30px;
 }
 
 .user-profile .dropdown-menu a:hover {

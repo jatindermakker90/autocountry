@@ -24,7 +24,9 @@ User Edit - AutoCountry
             <div class="breadcrumbs-area clearfix">
                 <h4 class="page-title pull-left">Profile Update</h4>
                 <ul class="breadcrumbs pull-left">
-                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'superadmin')
+                        <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    @endif
                     <li><span>Edit Details - {{ $admin->name }}</span></li>
                 </ul>
             </div>
