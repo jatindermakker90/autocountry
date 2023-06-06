@@ -20,7 +20,7 @@
     </div>
     <!-- preloader area end -->
     <!-- page container area start -->
-    <div id="main">
+    <div id="main" style="margin-left: 250px;">
     <!-- <div class="page-container"> -->
     <div class="">
 

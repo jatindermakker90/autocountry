@@ -2,7 +2,7 @@
 @php
     $usr = Auth::guard('admin')->user();
 @endphp
-<div class="sidebar-menu" id="sidebar-menu">
+<div class="sidebar-menu" id="sidebar-menu" style="width:250px;">
    <div class="sidebar-header" style="margin-left: 30px; height:50px; margin-buttom:30px">
        <!-- <div class="sidebar"> -->
            <a href="{{ route('admin.dashboard') }}">
@@ -25,6 +25,9 @@
                                </ul>
                             </li>
                         @endif
+                        <li class="active">
+                           <a href="{{ route('profile.editView',[Auth::guard('admin')->user()->id]) }}" aria-expanded="true"><i class="fa fa-user" aria-hidden="true"></i><span>My Profile</span></a>
+                        </li>
                     @endif
                     @if ($usr->can('dashboard.view'))
                         <li class="active">
