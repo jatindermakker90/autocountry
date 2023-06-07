@@ -147,32 +147,21 @@ class AdminsController extends Controller
             return back();
         }
 
-        // Create New Admin
+        // Check details
         $admin = Admin::find($id);
-
-        // Validation Data
-        // $request->validate([
-        //     'name' => 'required|max:50',
-        //     'email' => 'required|max:100|email|unique:admins,email,' . $id,
-        //     'password' => 'nullable|min:6|confirmed',
-        // ]);
-
-
-        // $admin->name = $request->name;
-        // $admin->email = $request->email;
-        // $admin->username = $request->username;
-        if($request->password != $request->password_confirmation){
-          session()->flash('error', 'Password and Confirm Password not same !!');
+        if(Hash::check($request->password, $admin->password)){
+          if ($request->password_confirmation) {
+              $admin->password = Hash::make($request->password_confirmation);
+          }
+          $admin->save();
+        } else {
+          session()->flash('error', 'Current Password does not match !!');
           return back();
         }
-        if ($request->password) {
-            $admin->password = Hash::make($request->password);
-        }
-        $admin->save();
 
-        // $admin->roles()->detach();
-        // if ($request->roles) {
-        //     $admin->assignRole($request->roles);
+        // if($request->password != $request->password_confirmation){
+        //   session()->flash('error', 'Password and Confirm Password not same !!');
+        //   return back();
         // }
 
         session()->flash('success', 'Details has been updated !!');

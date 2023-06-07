@@ -62,11 +62,11 @@ User Edit - AutoCountry
 
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-12">
-                                <label for="password">Password</label>
+                                <label for="password">Current Password</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
-                                <label for="password_confirmation">Confirm Password</label>
+                                <label for="password_confirmation">New Password</label>
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Enter Password">
                             </div>
                         </div>
