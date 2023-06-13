@@ -50,6 +50,7 @@ Route::group(['prefix' => 'web'], function () {
      // Files Routes
     Route::get('/files/list','FilesController@fileslist')->name('fileslist');
     Route::get('/file/upload','FilesController@getfileuploads')->name('fileupload');
+    Route::get('/sku/upload','FilesController@getSKUuploads')->name('skuupload');
     Route::post('/store','FilesController@store')->name('store');
     Route::get('/files/list/{category}','FilesController@filebaseoncategory')->name('filebaseoncategory');
     Route::get('/profile/edit/{user_id}','Backend\AdminsController@profileEditView')->name('profile.editView');

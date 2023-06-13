@@ -89,6 +89,12 @@
                                     <span>Upload Files</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('skuupload') }}" aria-expanded="true">
+                                    <i class="fa fa-upload"></i>
+                                    <span>Discarded SKU's</span>
+                                </a>
+                            </li>
                        </ul>
                    </li>
                    @endif

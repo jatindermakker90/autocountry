@@ -79,4 +79,8 @@ class FilesController extends Controller
         return view('backend.pages.files.upload');
     }
 
+    public function getSKUuploads(){
+      dd('heerreee');
+    }
+
 }
