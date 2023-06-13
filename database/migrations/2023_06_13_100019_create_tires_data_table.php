@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('load_description')->nullable(true);
             $table->string('description')->nullable(true);
             $table->string('season')->nullable(true);
-            $table->tinyInteger('winter_approved')->default(0);
-            $table->tinyInteger('studdable')->default(0);
+            $table->string('winter_approved')->nullable(true);
+            $table->string('studdable')->nullable(true);
             $table->float('price',8,2)->nullable(true);
             $table->integer('quantity')->nullable(true);
             $table->string('image1')->nullable(true);

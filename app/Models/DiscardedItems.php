@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DiscardedItems extends Model
 {
     use HasFactory;
+
+    protected $table = 'discarded_items';
 }
