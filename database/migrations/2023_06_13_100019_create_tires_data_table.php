@@ -23,11 +23,11 @@ return new class extends Migration
             $table->string('speed_rating')->nullable(true);
             $table->string('load_description')->nullable(true);
             $table->string('description')->nullable(true);
+            $table->float('price',8,2)->nullable(true);
+            $table->integer('quantity')->nullable(true);
             $table->string('season')->nullable(true);
             $table->string('winter_approved')->nullable(true);
             $table->string('studdable')->nullable(true);
-            $table->float('price',8,2)->nullable(true);
-            $table->integer('quantity')->nullable(true);
             $table->string('image1')->nullable(true);
             $table->string('image2')->nullable(true);
             $table->string('image4')->nullable(true);
