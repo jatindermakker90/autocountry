@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\ImageUpload;
 use Illuminate\Support\Facades\Auth;
 use App\Models\FileUpload;
+use App\Exports\WheelsDataExport;
+use App\Imports\WheelsDataImport;
+use Maatwebsite\Excel\Facades\Excel;
+use DB;
+use Storage;
 
 class FilesController extends Controller
 {
@@ -25,13 +30,8 @@ class FilesController extends Controller
         $filesizeinkb = number_format($sizeoffile / 1024, 2) . ' KB';
         $checkfile = FileUpload::where('category_name',$request->category)->first();
         if($checkfile){
-          if(is_file($checkfile->file))
-            {
-                Storage::delete($checkfile->file);
-                unlink(storage_path('/storage/app/public', $checkfile->file));
-            } else {
-                //echo "File does not exist";
-            }
+          Storage::delete($checkfile->file);
+          unlink(storage_path('app/public/'.$checkfile->file));
           $checkfile->user_id = $user_id;
           $checkfile->file_size = $filesizeinkb;
           $checkfile->file = $temp_file_name;
@@ -46,7 +46,10 @@ class FilesController extends Controller
           $uploadimage->category_name = $request->category;
           $uploadimage->save();
         }
-        $request['file']->move(base_path() . '/storage/app/public', $temp_file_name);
+        // $request['file']->move(base_path() . '/storage/app/public', $temp_file_name);
+        DB::table('wheels_data')->truncate();
+        Excel::import(new WheelsDataImport,request()->file('file'));
+        Excel::store(new WheelsDataExport, $temp_file_name, 'custom-path');
         $files = FileUpload::all();
         //return redirect('fileslist',compact('files'));
         return redirect('/web/files/list')->with(['files'=>$files,'success'=> 'File has been stored successfully!']);

@@ -64,7 +64,11 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-
+        // Custom Path Created For autocountry
+        'custom-path' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+        ],
     ],
 
     /*
