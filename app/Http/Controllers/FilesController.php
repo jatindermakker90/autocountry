@@ -11,6 +11,8 @@ use App\Imports\WheelsDataImport;
 use Maatwebsite\Excel\Facades\Excel;
 use DB;
 use Storage;
+use App\Exports\TiresDataExport;
+use App\Imports\TiresDataImport;
 
 class FilesController extends Controller
 {
@@ -47,9 +49,17 @@ class FilesController extends Controller
           $uploadimage->save();
         }
         // $request['file']->move(base_path() . '/storage/app/public', $temp_file_name);
-        DB::table('wheels_data')->truncate();
-        Excel::import(new WheelsDataImport,request()->file('file'));
-        Excel::store(new WheelsDataExport, $temp_file_name, 'custom-path');
+        if($request->category == 'wheels') {
+          DB::table('wheels_data')->truncate();
+          Excel::import(new WheelsDataImport,request()->file('file'));
+          Excel::store(new WheelsDataExport, $temp_file_name, 'custom-path');
+        } else if($request->category == 'tires') {
+          DB::table('tires_data')->truncate();
+          Excel::import(new TiresDataImport,request()->file('file'));
+          Excel::store(new TiresDataExport, $temp_file_name, 'custom-path');
+        } else {
+          //
+        }
         $files = FileUpload::all();
         //return redirect('fileslist',compact('files'));
         return redirect('/web/files/list')->with(['files'=>$files,'success'=> 'File has been stored successfully!']);
