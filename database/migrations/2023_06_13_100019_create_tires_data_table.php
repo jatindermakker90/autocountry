@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('image3')->nullable(true);
             $table->string('image5')->nullable(true);
             $table->string('image6')->nullable(true);
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
