@@ -33,7 +33,7 @@ class FilesController extends Controller
         $checkfile = FileUpload::where('category_name',$request->category)->first();
         if($checkfile){
           Storage::delete($checkfile->file);
-          unlink(storage_path('app/public/'.$checkfile->file));
+          //unlink(storage_path('app/public/'.$checkfile->file));
           $checkfile->user_id = $user_id;
           $checkfile->file_size = $filesizeinkb;
           $checkfile->file = $temp_file_name;
