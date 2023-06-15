@@ -27,7 +27,7 @@ class WheelsDataImport implements ToModel,WithStartRow
          if(empty($checkIfSkuExists)){
             return new WheelsData([
                 'brand_name' => $row[0], 'model' => $row[1], 'sku_code' => $row[2],
-                'finish' => $row[3], 'size' => $row[4], 'diameter' => $row[5],
+                'finish' => $row[3], 'size' => $row[5].'x'.$row[6], 'diameter' => $row[5],
                 'width' => $row[6], 'bolt_pattern' => $row[7], 'offset' => $row[8],
                 'backspace' => $row[9], 'bore' => $row[10], 'price' => $row[11],
                 'quantity' => $row[12], 'image1' => $row[13], 'image2' => $row[14],
@@ -43,7 +43,7 @@ class WheelsDataImport implements ToModel,WithStartRow
           if(empty($checkIfSkuExists)){
              return new WheelsData([
                  'brand_name' => $row[0], 'model' => $row[1], 'sku_code' => $row[2],
-                 'finish' => $row[3], 'size' => $row[4], 'diameter' => $row[5],
+                 'finish' => $row[3], 'size' => $row[5].'x'.$row[6], 'diameter' => $row[5],
                  'width' => $row[6], 'bolt_pattern' => $row[7], 'offset' => $row[8],
                  'backspace' => $row[9], 'bore' => $row[10], 'price' => $row[11],
                  'quantity' => $row[12], 'image1' => $row[13], 'image2' => $row[14],

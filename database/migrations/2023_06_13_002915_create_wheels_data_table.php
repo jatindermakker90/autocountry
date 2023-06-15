@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('brand_name')->nullable(true);
             $table->string('model')->nullable(true);
             $table->string('sku_code')->nullable(true);
-            $table->string('size')->nullable(true);
             $table->string('finish')->nullable(true);
+            $table->string('size')->nullable(true);
             $table->integer('diameter')->nullable(true);
             $table->integer('width')->nullable(true);
             $table->string('bolt_pattern')->nullable(true);
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('image3')->nullable(true);
             $table->string('image5')->nullable(true);
             $table->string('image6')->nullable(true);
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 
