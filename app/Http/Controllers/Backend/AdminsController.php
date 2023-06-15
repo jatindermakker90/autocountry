@@ -83,11 +83,11 @@ class AdminsController extends Controller
         if ($request->roles) {
             $admin->assignRole($request->roles);
         }
-        $mail = Mail::send('mail', ['course_details' => 'details'], function ($message) {
-            $message->from('info@autocountrydata.ca', 'Subject');
-            $message->subject('Subject');
-            $message->to($request->email);
-        });
+        // $mail = Mail::send('mail', ['course_details' => 'details'], function ($message, $request) {
+        //     $message->from('info@autocountrydata.ca', 'Subject');
+        //     $message->subject('Subject');
+        //     $message->to($request->email);
+        // });
 
         session()->flash('success', 'User has been created !!');
         return redirect()->route('admin.admins.index');
