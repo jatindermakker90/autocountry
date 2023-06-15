@@ -70,7 +70,7 @@
                        </ul>
                    </li>
                    @endif
-                   @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'supplier')
+                   @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'customer')
                    <li>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="fa fa-upload"></i>

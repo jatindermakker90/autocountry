@@ -25,7 +25,7 @@ Admin - AutoCountry
             <div class="breadcrumbs-area clearfix">
                 <h4 class="page-title pull-left">All Files</h4>
                 <ul class="breadcrumbs pull-left">
-                     @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'supplier')
+                     @if(isset($usr->roles[0]) && $usr->roles[0]->name !== 'customer')
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                     @endif
                     <li><span>All Files</span></li>

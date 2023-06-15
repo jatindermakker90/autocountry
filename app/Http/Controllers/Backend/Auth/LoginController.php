@@ -64,7 +64,7 @@ class LoginController extends Controller
               return back();
             }
             session()->flash('success', 'Successully Logged in !');
-            if(isset($usr->roles[0]) && $usr->roles[0]->name == 'supplier'){
+            if(isset($usr->roles[0]) && $usr->roles[0]->name == 'customer'){
                 return redirect()->route('fileslist');
             }else{
                 return redirect()->route('admin.dashboard');
@@ -78,7 +78,7 @@ class LoginController extends Controller
                   return back();
                 }
                 session()->flash('success', 'Successully Logged in !');
-                if(isset($usr->roles[0]) && $usr->roles[0]->name == 'supplier'){
+                if(isset($usr->roles[0]) && $usr->roles[0]->name == 'customer'){
                     return redirect()->route('fileslist');
                 }else{
                     return redirect()->route('admin.dashboard');
