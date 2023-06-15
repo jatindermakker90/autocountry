@@ -11,6 +11,8 @@ class TiresData extends Model
 
     protected $table = 'tires_data';
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
