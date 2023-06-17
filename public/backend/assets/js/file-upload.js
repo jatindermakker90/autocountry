@@ -25,3 +25,12 @@ $('.image-upload-wrap').bind('dragover', function () {
 	$('.image-upload-wrap').bind('dragleave', function () {
 		$('.image-upload-wrap').removeClass('image-dropping');
 });
+
+function fileupload(){
+  $('.selection_disable').prop('disabled',true);
+  $('.file-upload-btn').prop('disabled',true);
+  $('.remove-image').prop('disabled', true);
+  $('#button_name').prop('disabled', true);
+  $("#button_name").text("Please wait | File Uploading....");
+  $("#myForm").submit();
+}

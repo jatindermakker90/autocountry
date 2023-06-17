@@ -53,10 +53,18 @@ class FilesController extends Controller
           DB::table('wheels_data')->truncate();
           Excel::import(new WheelsDataImport,request()->file('file'));
           Excel::store(new WheelsDataExport, $temp_file_name, 'custom-path');
+          $file_path = storage_path('app/public/'.$temp_file_name);
+          $regenerate_size = filesize($file_path);
+          $refilesizeinkb = number_format($regenerate_size / 1024, 2) . ' KB';
+          $update_size = FileUpload::where('file',$temp_file_name)->update(['file_size'=> $refilesizeinkb]);
         } else if($request->category == 'tires') {
           DB::table('tires_data')->truncate();
           Excel::import(new TiresDataImport,request()->file('file'));
           Excel::store(new TiresDataExport, $temp_file_name, 'custom-path');
+          $file_path = storage_path('app/public/'.$temp_file_name);
+          $regenerate_size = filesize($file_path);
+          $refilesizeinkb = number_format($regenerate_size / 1024, 2) . ' KB';
+          $update_size = FileUpload::where('file',$temp_file_name)->update(['file_size'=> $refilesizeinkb]);
         } else {
           //
         }

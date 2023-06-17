@@ -34,7 +34,7 @@ Dashboard Page - Admin Panel
                 <h4 class="header-title">File Upload</h4>
                 @include('backend.layouts.partials.messages')
                 <div class="seofct-icon">File Upload</div>
-                    <form method="post" action="{{route('store')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{route('store')}}" enctype="multipart/form-data" id="myForm">
                       {{ csrf_field() }}
                     <div class="file-upload">
                       <div class="row">
@@ -65,7 +65,7 @@ Dashboard Page - Admin Panel
                           <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded File</span></button>
                         </div>
                         <div class="image-title-wrap">
-                          <button type="submit" value="submit" class="btn btn-primary" style="width:100%; font-size: 18px;">Upload File <i class="fa fa-upload"></i></button>
+                          <button type="button" onclick="fileupload()" value="submit" id="button_name" class="btn btn-primary" style="width:100%; font-size: 18px;">Upload File <i class="fa fa-upload"></i></button>
                         </div>
                       </div>
                   </div>
