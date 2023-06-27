@@ -30,13 +30,14 @@ class TiresDataImport implements ToModel,WithStartRow
                //
              } else {
                return new TiresData([
-                   'brand_name' => $row[0], 'model' => $row[1], 'sku_code' => $row[2],
-                   'size' => $row[3], 'load_range' => $row[4], 'speed_rating' => $row[5],
-                   'load_description' => $row[6], 'description' => $row[7], 'price' => $row[8],
-                   'quantity' => $row[9], 'season' => $row[10], 'winter_approved' => $row[11],
-                   'studdable' => $row[12], 'image1' => $row[13], 'image2' => $row[14],
-                   'image3' => $row[15], 'image4' => $row[16], 'image5' => $row[17],
-                   'image6' => $row[18],
+                  'brand_name' => $row[0], 'model' => $row[1], 'sku_code' => $row[2],
+                  'size' => $row[3], 'load_range' => $row[4], 'speed_rating' => $row[5],
+                  'load_description' => $row[6], 'description' => $row[7], 'map' => $row[8],
+                  'cost' => $row[9],
+                  'quantity' => $row[10], 'season' => $row[11], 'winter_approved' => $row[12],
+                  'studdable' => $row[13], 'image1' => $row[14], 'image2' => $row[15],
+                  'image3' => $row[16], 'image4' => $row[17], 'image5' => $row[18],
+                  'image6' => $row[19],
                ]);
              }
           }
@@ -51,11 +52,12 @@ class TiresDataImport implements ToModel,WithStartRow
               return new TiresData([
                   'brand_name' => $row[0], 'model' => $row[1], 'sku_code' => $row[2],
                   'size' => $row[3], 'load_range' => $row[4], 'speed_rating' => $row[5],
-                  'load_description' => $row[6], 'description' => $row[7], 'price' => $row[8],
-                  'quantity' => $row[9], 'season' => $row[10], 'winter_approved' => $row[11],
-                  'studdable' => $row[12], 'image1' => $row[13], 'image2' => $row[14],
-                  'image3' => $row[15], 'image4' => $row[16], 'image5' => $row[17],
-                  'image6' => $row[18],
+                  'load_description' => $row[6], 'description' => $row[7], 'map' => $row[8],
+                  'cost' => $row[9],
+                  'quantity' => $row[10], 'season' => $row[11], 'winter_approved' => $row[12],
+                  'studdable' => $row[13], 'image1' => $row[14], 'image2' => $row[15],
+                  'image3' => $row[16], 'image4' => $row[17], 'image5' => $row[18],
+                  'image6' => $row[19],
               ]);
             }
           }

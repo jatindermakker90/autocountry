@@ -21,7 +21,7 @@ class TiresDataExport implements FromCollection, WithHeadings
     {
         return [
           "Brand","Model","SKU","Size",
-          "Load Range","Speed Rating","Load Description","Description","Price",
+          "Load Range","Speed Rating","Load Description","Description","map","cost",
           "Quantity","Season","Winter Approved","Studdable","Image 1","Image 2",
           "Image 3","Image 4","Image 5","Image 6"
         ];

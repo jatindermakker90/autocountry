@@ -36,35 +36,35 @@ class FilesController extends Controller
           unlink(storage_path('app/public/'.$checkfile->file));
           $checkfile->user_id = $user_id;
           $checkfile->file_size = $filesizeinkb;
-          $checkfile->file = $temp_file_name;
+          $checkfile->file = $original_file_name;
           $checkfile->original_file_name = $original_file_name;
           $checkfile->save();
         } else {
           $uploadimage = new FileUpload();
           $uploadimage->user_id = $user_id;
           $uploadimage->file_size = $filesizeinkb;
-          $uploadimage->file = $temp_file_name;
+          $uploadimage->file = $original_file_name;
           $uploadimage->original_file_name = $original_file_name;
           $uploadimage->category_name = $request->category;
           $uploadimage->save();
         }
-        // $request['file']->move(base_path() . '/storage/app/public', $temp_file_name);
+        // $request['file']->move(base_path() . '/storage/app/public', $original_file_name);
         if($request->category == 'wheels') {
           DB::table('wheels_data')->truncate();
           Excel::import(new WheelsDataImport,request()->file('file'));
-          Excel::store(new WheelsDataExport, $temp_file_name, 'custom-path');
-          $file_path = storage_path('app/public/'.$temp_file_name);
+          Excel::store(new WheelsDataExport, $original_file_name, 'custom-path');
+          $file_path = storage_path('app/public/'.$original_file_name);
           $regenerate_size = filesize($file_path);
           $refilesizeinkb = number_format($regenerate_size / 1024, 2) . ' KB';
-          $update_size = FileUpload::where('file',$temp_file_name)->update(['file_size'=> $refilesizeinkb]);
+          $update_size = FileUpload::where('file',$original_file_name)->update(['file_size'=> $refilesizeinkb]);
         } else if($request->category == 'tires') {
           DB::table('tires_data')->truncate();
           Excel::import(new TiresDataImport,request()->file('file'));
-          Excel::store(new TiresDataExport, $temp_file_name, 'custom-path');
-          $file_path = storage_path('app/public/'.$temp_file_name);
+          Excel::store(new TiresDataExport, $original_file_name, 'custom-path');
+          $file_path = storage_path('app/public/'.$original_file_name);
           $regenerate_size = filesize($file_path);
           $refilesizeinkb = number_format($regenerate_size / 1024, 2) . ' KB';
-          $update_size = FileUpload::where('file',$temp_file_name)->update(['file_size'=> $refilesizeinkb]);
+          $update_size = FileUpload::where('file',$original_file_name)->update(['file_size'=> $refilesizeinkb]);
         } else {
           //
         }

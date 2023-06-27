@@ -20,7 +20,7 @@ class WheelsData extends Model
      */
     protected $fillable = [
         'brand_name', 'sku_code', 'finish', 'model', 'size', 'diameter',
-        'width', 'bolt_pattern', 'offset', 'backspace', 'bore', 'price',
+        'width', 'bolt_pattern', 'offset', 'backspace', 'bore', 'map','cost',
         'quantity', 'image1', 'image2', 'image3', 'image4', 'image5', 'image6'
     ];
 }

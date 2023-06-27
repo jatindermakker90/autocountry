@@ -21,7 +21,7 @@ class WheelsDataExport implements FromCollection, WithHeadings
         return [
           "Brand","Model","SKU","Finish","Size",
           "Diameter","Width","Bolt Pattern","Offset","Backspace",
-          "Bore","Price","Quantity","Image 1","Image 2",
+          "Bore","map","cost","Quantity","Image 1","Image 2",
           "Image 3","Image 4","Image 5","Image 6"
         ];
     }

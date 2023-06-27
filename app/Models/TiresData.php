@@ -20,7 +20,7 @@ class TiresData extends Model
      */
     protected $fillable = [
         'brand_name', 'model', 'sku_code', 'size', 'load_range', 'speed_rating',
-        'load_description', 'description', 'price','quantity', 'season',
+        'load_description', 'description', 'map','cost','quantity', 'season',
         'winter_approved', 'studdable', 'image1', 'image2',
         'image3', 'image4', 'image5', 'image6'
     ];

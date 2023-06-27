@@ -26,7 +26,8 @@ return new class extends Migration
             $table->integer('offset')->nullable(true);
             $table->float('backspace',8,2)->nullable(true);
             $table->float('bore',8,2)->nullable(true);
-            $table->float('price',8,2)->nullable(true);
+            $table->float('map',8,2)->nullable(true);
+            $table->float('cost',8,2)->nullable(true);
             $table->integer('quantity')->nullable(true);
             $table->string('image1')->nullable(true);
             $table->string('image2')->nullable(true);
