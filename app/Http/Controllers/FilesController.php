@@ -13,6 +13,8 @@ use DB;
 use Storage;
 use App\Exports\TiresDataExport;
 use App\Imports\TiresDataImport;
+use App\Exports\AccessoriesDataExport;
+use App\Imports\AccessoriesDataImport;
 
 class FilesController extends Controller
 {
@@ -66,7 +68,13 @@ class FilesController extends Controller
           $refilesizeinkb = number_format($regenerate_size / 1024, 2) . ' KB';
           $update_size = FileUpload::where('file',$original_file_name)->update(['file_size'=> $refilesizeinkb]);
         } else {
-          //
+          DB::table('accessories_data')->truncate();
+          Excel::import(new AccessoriesDataImport,request()->file('file'));
+          Excel::store(new AccessoriesDataExport, $original_file_name, 'custom-path');
+          $file_path = storage_path('app/public/'.$original_file_name);
+          $regenerate_size = filesize($file_path);
+          $refilesizeinkb = number_format($regenerate_size / 1024, 2) . ' KB';
+          $update_size = FileUpload::where('file',$original_file_name)->update(['file_size'=> $refilesizeinkb]);
         }
         $files = FileUpload::all();
         //return redirect('fileslist',compact('files'));
